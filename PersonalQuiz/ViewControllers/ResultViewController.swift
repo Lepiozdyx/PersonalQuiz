@@ -13,7 +13,6 @@ final class ResultViewController: UIViewController {
     @IBOutlet var messageLabel: UILabel!
     
     var answersChosenResult: [Answer]!
-    var animal: Animal!
 
     override func viewDidLoad() {
         super.viewDidLoad()
