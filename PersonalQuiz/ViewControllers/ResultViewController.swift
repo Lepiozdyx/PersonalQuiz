@@ -35,14 +35,25 @@ private extension ResultViewController {
         var responseRate: [Animal: Int] = [:]
         
         for answer in answersChosenResult {
-            responseRate[answer.animal] = (responseRate[answer.animal] ?? 0) + 1
+            if let count = responseRate[answer.animal] {
+                responseRate[answer.animal] = count + 1
+            } else {
+                responseRate[answer.animal] = 1
+            }
         }
         
-        let sortedResponseRate = responseRate.sorted { $0.value > $1.value }
+        var mostResponseRate: Animal?
+        var maxCount = 0
+        for (animal, count) in responseRate {
+            if count > maxCount {
+                maxCount = count
+                mostResponseRate = animal
+            }
+        }
         
-        guard let mostResponseRate = sortedResponseRate.first?.key else { return }
-        
-        updateUI(with: mostResponseRate)
+        if let mostResponseRate = mostResponseRate {
+            updateUI(with: mostResponseRate)
+        }
     }
     
     func updateUI(with animal: Animal) {
