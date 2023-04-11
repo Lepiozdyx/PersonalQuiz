@@ -12,7 +12,7 @@ final class ResultViewController: UIViewController {
     @IBOutlet var animalTypeLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
     
-    var answersChosenResult: [Answer]!
+    var answers: [Answer]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,27 +33,20 @@ final class ResultViewController: UIViewController {
 private extension ResultViewController {
     func setsResult() {
         var responseRate: [Animal: Int] = [:]
+        let animals = answers.map { $0.animal }
         
-        for answer in answersChosenResult {
-            if let count = responseRate[answer.animal] {
-                responseRate[answer.animal] = count + 1
+        for animal in animals {
+            if let count = responseRate[animal] {
+                responseRate[animal] = count + 1
             } else {
-                responseRate[answer.animal] = 1
+                responseRate[animal] = 1
             }
         }
         
-        var mostResponseRate: Animal?
-        var maxCount = 0
-        for (animal, count) in responseRate {
-            if count > maxCount {
-                maxCount = count
-                mostResponseRate = animal
-            }
-        }
+        let sortedResponseRate = responseRate.sorted { $0.value > $1.value }
+        guard let mostResponseRate = sortedResponseRate.first?.key else { return }
         
-        if let mostResponseRate = mostResponseRate {
-            updateUI(with: mostResponseRate)
-        }
+        updateUI(with: mostResponseRate)
     }
     
     func updateUI(with animal: Animal) {
