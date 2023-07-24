@@ -2,7 +2,7 @@
 //  QuestionViewController.swift
 //  PersonalQuiz
 //
-//  Created by Alexey Efimov on 03.04.2023.
+//  Created by Alex on 03.04.2023.
 //
 
 import UIKit
@@ -10,6 +10,8 @@ import UIKit
 final class QuestionViewController: UIViewController {
     
     // MARK: - IBOutlets
+    
+    @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var questionProgressView: UIProgressView!
     
@@ -35,6 +37,7 @@ final class QuestionViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImage.setBackgroundImage("background")
         updateUI()
         let answerCount = Float(currentAnswers.count - 1)
         rangedSlider.maximumValue = answerCount

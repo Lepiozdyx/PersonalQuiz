@@ -2,7 +2,7 @@
 //  Question.swift
 //  PersonalQuiz
 //
-//  Created by Alexey Efimov on 03.04.2023.
+//  Created by Alex on 03.04.2023.
 //
 
 struct Question {
