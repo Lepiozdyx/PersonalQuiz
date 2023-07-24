@@ -10,7 +10,7 @@ import UIKit
 final class ResultViewController: UIViewController {
     
     @IBOutlet var backgroundImage: UIImageView!
-    @IBOutlet var animalTypeLabel: UILabel!
+    @IBOutlet var statusLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
     
     var answers: [Answer]!
@@ -34,14 +34,14 @@ final class ResultViewController: UIViewController {
 // MARK: - Private Methods
 private extension ResultViewController {
     func setsResult() {
-        var responseRate: [Animal: Int] = [:]
-        let animals = answers.map { $0.animal }
+        var responseRate: [Status: Int] = [:]
+        let answers = answers.map { $0.status }
         
-        for animal in animals {
-            if let count = responseRate[animal] {
-                responseRate[animal] = count + 1
+        for answer in answers {
+            if let count = responseRate[answer] {
+                responseRate[answer] = count + 1
             } else {
-                responseRate[animal] = 1
+                responseRate[answer] = 1
             }
         }
         
@@ -51,9 +51,9 @@ private extension ResultViewController {
         updateUI(with: mostResponseRate)
     }
     
-    func updateUI(with animal: Animal) {
-        animalTypeLabel.text = "Вы - \(animal.rawValue)"
-        messageLabel.text = animal.definition
+    func updateUI(with status: Status) {
+        statusLabel.text = "You - \(status.rawValue)"
+        messageLabel.text = status.definition
     }
     
 }
