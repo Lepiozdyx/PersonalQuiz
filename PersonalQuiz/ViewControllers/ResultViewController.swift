@@ -17,7 +17,7 @@ final class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundImage.setBackgroundImage("background")
+        backgroundImage.setBackgroundImage("backgroundFinal")
         navigationItem.hidesBackButton = true
         setsResult()
     }
