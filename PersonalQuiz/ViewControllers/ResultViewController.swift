@@ -2,13 +2,14 @@
 //  ResultViewController.swift
 //  PersonalQuiz
 //
-//  Created by Alexey Efimov on 06.04.2023.
+//  Created by Alex on 06.04.2023.
 //
 
 import UIKit
 
 final class ResultViewController: UIViewController {
     
+    @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var animalTypeLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
     
@@ -16,6 +17,7 @@ final class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImage.setBackgroundImage("background")
         navigationItem.hidesBackButton = true
         setsResult()
     }
